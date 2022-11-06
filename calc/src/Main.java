@@ -7,7 +7,13 @@ public class Main {
         System.out.println(calc(input));
     }
     public static boolean isNumeric(String string) {
-        return string != null && !string.equals("");
+        {
+            if (string == null || string.isEmpty()) return false;
+            for (int i = 0; i < string.length(); i++) {
+                if (!Character.isDigit(string.charAt(i))) return false;
+            }
+            return true;
+        }
         }
 
     public static String calc(String input) throws enterException {
@@ -83,6 +89,10 @@ public class Main {
                         throw new RuntimeException(e);
                     }
                 }
+                else
+                {
+                    throw new enterException("Не верный формат ввода");
+                }
             }
             case (1) -> {
                 strings = input.split("-");
@@ -134,9 +144,8 @@ public class Main {
                     }
 
                 }
-                else
-                {
-                    throw new enterException("Вы ввели число не в диапозоне от 1 до 10");
+                else {
+                    throw new enterException("Неверный формат ввода");
                 }
             }
             case (2) -> {
@@ -187,6 +196,9 @@ public class Main {
                         throw new RuntimeException(e);
                     }
                 }
+                else {
+                    throw new enterException("Вы ввели число не в диапозоне от 1 до 10");
+                }
 
             }
             case (3) -> {
@@ -236,6 +248,9 @@ public class Main {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                }
+                else {
+                    throw new enterException("Вы ввели число не в диапозоне от 1 до 10");
                 }
 
             }
